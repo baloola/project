@@ -9,7 +9,7 @@
   ],
   "properties": {
     "stac_extensions": {
-      "type": "object",
+      "type": "array",
       "contains": {
         "const": "https://raw.githubusercontent.com/baloola/project/refs/heads/main/json-schema/schema.json"
       }
@@ -19,10 +19,6 @@
     {
       "$comment": "This is the schema for STAC Items.",
       "type": "object",
-      "required": [
-        "type",
-        "properties"
-      ],
       "properties": {
         "type": {
           "const": "Feature"
@@ -35,9 +31,6 @@
     {
       "$comment": "This is the schema for STAC Catalogs.",
       "type": "object",
-      "required": [
-        "type"
-      ],
       "properties": {
         "type": {
           "const": "Catalog"
@@ -83,23 +76,18 @@
   "definitions": {
     "fields": {
       "type": "object",
-      "required": [
-        "project"
-      ],
       "properties": {
-        "project": {
-          "type": "object",
           "properties": {
-            "name": {
+            "project:name": {
               "type": "string"
             },
-            "purpose": {
+            "project:purpose": {
               "type": "string"
             },
-            "status": {
+            "project:status": {
               "type": "string"
             },
-            "website": {
+            "project:website": {
               "allOf": [
                 {
                   "$ref": "#/definitions/link"
@@ -118,7 +106,6 @@
                 }
               ]
             }
-          }
         }
       }
     },
