@@ -105,6 +105,9 @@
                   }
                 }
               ]
+            },
+            "project:use_case": {
+              "type": "string"
             }
         }
       }

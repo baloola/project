@@ -46,7 +46,8 @@
     "project:links": {
       "href": "https://example.com/examples/item.json",
       "rel": "related"
-    }
+    },
+    "project:use_case": "Use_Case_1"
   },
   "links": [
     {
