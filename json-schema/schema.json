@@ -77,67 +77,67 @@
     "fields": {
       "type": "object",
       "properties": {
-          "properties": {
-            "project:name": {
-              "type": "string"
-            },
-            "project:purpose": {
-              "type": "string"
-            },
-            "project:status": {
-              "type": "string"
-            },
-            "project:website": {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/link"
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "rel",
-                    "type"
-                  ],
-                  "properties": {
-                    "rel": {
-                      "const": "related"
-                    }
+        "properties": {
+          "project:name": {
+            "type": "string"
+          },
+          "project:purpose": {
+            "type": "string"
+          },
+          "project:status": {
+            "type": "string"
+          },
+          "project:website": {
+            "allOf": [
+              {
+                "$ref": "#/definitions/link"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "rel",
+                  "type"
+                ],
+                "properties": {
+                  "rel": {
+                    "const": "related"
                   }
                 }
-              ]
-            },
-            "project:use_cases": {
-              "type": "array"
-            },
-            "project:platforms": {
-              "type": "array"
-            }
+              }
+            ]
+          },
+          "project:use_cases": {
+            "type": "array"
+          },
+          "project:platforms": {
+            "type": "array"
+          }
         }
       }
     },
     "link": {
-        "type": "object",
-        "required": [
-          "rel",
-          "href"
-        ],
-        "properties": {
-          "href": {
-            "type": "string",
-            "format": "iri-reference",
-            "minLength": 1
-          },
-          "rel": {
-            "type": "string",
-            "minLength": 1
-          },
-          "type": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          }
+      "type": "object",
+      "required": [
+        "rel",
+        "href"
+      ],
+      "properties": {
+        "href": {
+          "type": "string",
+          "format": "iri-reference",
+          "minLength": 1
+        },
+        "rel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
         }
       }
+    }
   }
 }
