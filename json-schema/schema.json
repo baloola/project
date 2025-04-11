@@ -106,8 +106,8 @@
                 }
               ]
             },
-            "project:use_case": {
-              "type": "string"
+            "project:use_cases": {
+              "type": "array"
             }
         }
       }
