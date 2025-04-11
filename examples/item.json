@@ -47,7 +47,8 @@
       "href": "https://example.com/examples/item.json",
       "rel": "related"
     },
-    "project:use_cases": "use_cases_1"
+    "project:use_cases": ["use_case_1"],
+    "project:platforms":["EOX", "Rasdaman"]
   },
   "links": [
     {
