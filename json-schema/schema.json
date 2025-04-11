@@ -109,7 +109,7 @@
           "project:use_cases": {
             "type": "array"
           },
-          "project:platforms": {
+          "project:datacube_platforms": {
             "type": "array"
           }
         }
