@@ -109,8 +109,13 @@
           "project:use_cases": {
             "type": "array"
           },
-          "project:datacube_platforms": {
-            "type": "array"
+          "project:datacube_platform": {
+            "type": "string",
+            "enum": [
+              "Eox",
+              "Rasdaman",
+              "Both"
+            ]
           }
         }
       }

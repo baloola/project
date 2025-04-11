@@ -50,10 +50,7 @@
     "project:use_cases": [
       "use_case_1"
     ],
-    "project:datacube_platforms": [
-      "EOX",
-      "Rasdaman"
-    ]
+    "project:datacube_platform": "Both"
   },
   "links": [
     {
