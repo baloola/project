@@ -50,7 +50,7 @@
     "project:use_cases": [
       "use_case_1"
     ],
-    "project:datacube_platform": "Both"
+    "project:platform": "Both"
   },
   "links": [
     {
