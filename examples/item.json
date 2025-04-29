@@ -43,8 +43,8 @@
     "project:name": "test",
     "project:purpose": "test",
     "project:status": "test",
-    "project:links": {
-      "href": "https://example.com/examples/item.json",
+    "project:website": {
+      "href": "https://example-project.com",
       "rel": "related"
     },
     "project:use_cases": [
