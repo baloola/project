@@ -51,6 +51,7 @@
   },
   "item_assets": {
     "data": {
+      "title": "Data Asset",
       "roles": [
         "data"
       ]
