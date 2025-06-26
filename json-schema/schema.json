@@ -110,12 +110,7 @@
             "type": "array"
           },
           "project:platform": {
-            "type": "string",
-            "enum": [
-              "Eox",
-              "Rasdaman",
-              "Both"
-            ]
+            "type": "array"
           }
         }
       }
