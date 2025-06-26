@@ -30,29 +30,30 @@
       ]
     }
   },
-  "template:new_field": "test",
-  "template:xyz": {
-    "x": 1,
-    "y": 2,
-    "z": 3
+  "project:name": "test",
+  "project:purpose": "test",
+  "project:status": "test",
+  "project:website": {
+    "href": "https://example-project.com",
+    "rel": "related"
   },
-  "template:another_one": [
-    1,
-    2,
-    3
+  "project:use_cases": [
+    "use_case_1"
+  ],
+  "project:platform": [
+    "EOX",
+    "RASDAMAN"
   ],
   "assets": {
     "example": {
-      "href": "https://example.com/examples/file.xyz",
-      "template:new_field": "test"
+      "href": "https://example.com/examples/file.xyz"
     }
   },
   "item_assets": {
     "data": {
       "roles": [
         "data"
-      ],
-      "template:new_field": "test"
+      ]
     }
   },
   "summaries": {

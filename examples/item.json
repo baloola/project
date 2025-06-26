@@ -50,7 +50,10 @@
     "project:use_cases": [
       "use_case_1"
     ],
-    "project:platform": "Both"
+    "project:platform": [
+      "EOX",
+      "RASDAMAN"
+    ]
   },
   "links": [
     {

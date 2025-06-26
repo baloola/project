@@ -28,34 +28,23 @@ The fields in the table below can be used in these parts of STAC documents:
 
 | Field Name           | Type                      | Description                                  |
 | -------------------- | ------------------------- | -------------------------------------------- |
-| template:new_field   | string                    | **REQUIRED**. Describe the required field... |
-| template:xyz         | [XYZ Object](#xyz-object) | Describe the field...                        |
-| template:another_one | \[number]                 | Describe the field...                        |
+| project:name   | string                    | The name of the project. |
+| project:purpose | string                 | The purpose/aim/description of the project. |
+| project:status | string                 | Status of the project (eg. palnned, ongoing, completed). |
+| project:website         | [Link Object](#link-object) | Link to the website of the project. |
+| project:use_cases | [string]                 | Provide information which Use Cases have required the respective dataset  |
+| project:platform | [string]                 | Specifies the platforms or environments used for processing or generating the dataset. |
 
-### Additional Field Information
+### Link Object
 
-#### template:new_field
+This object describes a relationship with another entity.
 
-This is a much more detailed description of the field `template:new_field`...
-
-### XYZ Object
-
-This is the introduction for the purpose and the content of the XYZ Object...
-
-| Field Name | Type   | Description                                  |
-| ---------- | ------ | -------------------------------------------- |
-| x          | number | **REQUIRED**. Describe the required field... |
-| y          | number | **REQUIRED**. Describe the required field... |
-| z          | number | **REQUIRED**. Describe the required field... |
-
-## Relation types
-
-The following types should be used as applicable `rel` types in the
-[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
-
-| Type           | Description                           |
-| -------------- | ------------------------------------- |
-| fancy-rel-type | This link points to a fancy resource. |
+| Field Name | Type   | Description |
+| ---------- | ------ | ----------- |
+| href       | string | **REQUIRED.** The actual link in the format of an URL. Relative and absolute links are both allowed. |
+| rel        | string | **REQUIRED.** Relationship between the current document and the linked document. |
+| type       | string | Media type of the referenced entity. |
+| title      | string | A human readable title to be used in rendered displays of the link. |
 
 ## Contributing
 
@@ -67,10 +56,10 @@ for running tests are copied here for convenience.
 
 ### Running tests
 
-The same checks that run as checks on PR's are part of the repository and can be run locally to verify that changes are valid. 
+The same checks that run as checks on PR's are part of the repository and can be run locally to verify that changes are valid.
 To run tests locally, you'll need `npm`, which is a standard part of any [node.js installation](https://nodejs.org/en/download/).
 
-First you'll need to install everything with npm once. Just navigate to the root of this repository and on 
+First you'll need to install everything with npm once. Just navigate to the root of this repository and on
 your command line run:
 ```bash
 npm install
