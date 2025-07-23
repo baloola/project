@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/baloola/project/refs/heads/main/json-schema/schema.json#",
+  "$id": "https://baloola.github.io/project/v0.1.0/schema.json",
   "title": "Project Extension",
-  "description": "STAC project Extension for STAC Catalogs, Collections and Items.",
+  "description": "STAC Project Extension for STAC Items and STAC Collections.",
   "type": "object",
   "required": [
     "stac_extensions"
@@ -11,14 +11,18 @@
     "stac_extensions": {
       "type": "array",
       "contains": {
-        "const": "https://raw.githubusercontent.com/baloola/project/refs/heads/main/json-schema/schema.json"
+        "const": "https://baloola.github.io/project/v0.1.0/schema.json"
       }
     }
   },
   "oneOf": [
     {
-      "$comment": "This is the schema for STAC Items.",
+      "$comment": "This is the schema for STAC Items. Remove this object if this extension only applies to Collections.",
       "type": "object",
+      "required": [
+        "type",
+        "properties"
+      ],
       "properties": {
         "type": {
           "const": "Feature"
@@ -29,20 +33,6 @@
       }
     },
     {
-      "$comment": "This is the schema for STAC Catalogs.",
-      "type": "object",
-      "properties": {
-        "type": {
-          "const": "Catalog"
-        }
-      },
-      "allOf": [
-        {
-          "$ref": "#/definitions/fields"
-        }
-      ]
-    },
-    {
       "$comment": "This is the schema for STAC Collections.",
       "type": "object",
       "required": [
@@ -51,24 +41,58 @@
       "properties": {
         "type": {
           "const": "Collection"
-        }
-      },
-      "anyOf": [
-        {
-          "$ref": "#/definitions/fields"
         },
-        {
-          "$comment": "This is the schema for the fields in Summaries. By default, only checks the existance of the properties, but not the schema of the summaries.",
-          "required": [
-            "summaries"
-          ],
+        "summaries": {
+          "type": "object",
           "properties": {
-            "summaries": {
-              "required": [
-                "project"
+            "project:name": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/json_schema"
+                },
+                {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "$ref": "#/definitions/project:name"
+                  }
+                }
+              ]
+            },
+            "project:purpose": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/json_schema"
+                },
+                {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "$ref": "#/definitions/project:purpose"
+                  }
+                }
+              ]
+            },
+            "project:status": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/json_schema"
+                },
+                {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "$ref": "#/definitions/project:status"
+                  }
+                }
               ]
             }
           }
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/fields"
         }
       ]
     }
@@ -77,67 +101,43 @@
     "fields": {
       "type": "object",
       "properties": {
-        "properties": {
-          "project:name": {
-            "type": "string"
-          },
-          "project:purpose": {
-            "type": "string"
-          },
-          "project:status": {
-            "type": "string"
-          },
-          "project:website": {
-            "allOf": [
-              {
-                "$ref": "#/definitions/link"
-              },
-              {
-                "type": "object",
-                "required": [
-                  "rel",
-                  "type"
-                ],
-                "properties": {
-                  "rel": {
-                    "const": "related"
-                  }
-                }
-              }
-            ]
-          },
-          "project:use_cases": {
-            "type": "array"
-          },
-          "project:platform": {
-            "type": "array"
-          }
+        "project:name": {
+          "$ref": "#/definitions/project:name"
+        },
+        "project:purpose": {
+          "$ref": "#/definitions/project:purpose"
+        },
+        "project:status": {
+          "$ref": "#/definitions/project:status"
         }
-      }
+      },
+      "patternProperties": {
+        "^(?!project:)": {}
+      },
+      "additionalProperties": false
     },
-    "link": {
-      "type": "object",
-      "required": [
-        "rel",
-        "href"
-      ],
-      "properties": {
-        "href": {
-          "type": "string",
-          "format": "iri-reference",
-          "minLength": 1
-        },
-        "rel": {
-          "type": "string",
-          "minLength": 1
-        },
-        "type": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        }
-      }
+    "project:name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project:purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project:status": {
+      "type": "string",
+      "enum": [
+        "proposed",
+        "planned",
+        "ongoing",
+        "paused",
+        "completed",
+        "cancelled"
+      ]
+    },
+    "json_schema": {
+      "$comment": "JSON Schema",
+      "type": "object"
     }
   }
 }

@@ -1,14 +1,15 @@
-# Template Extension Specification
+# Project Extension Specification
 
-- **Title:** Template
-- **Identifier:** <https://stac-extensions.github.io/template/v1.0.0/schema.json>
-- **Field Name Prefix:** template
+- **Title:** Project
+- **Identifier:** <https://baloola.github.io/project/v0.1.0/schema.json>
+- **Field Name Prefix:** project
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @your-gh-handles @person2
+- **Owner**: @baloola @m-mohr
 
-This document explains the Template Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
-This is the place to add a short introduction.
+This document explains the Project Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
+Describes the associated project that is responsible for creating the data and metadata.
+Such projects often appear in the context of funded agency or government work.
 
 - Examples:
   - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
@@ -23,28 +24,34 @@ The fields in the table below can be used in these parts of STAC documents:
 - [ ] Catalogs
 - [x] Collections
 - [x] Item Properties (incl. Summaries in Collections)
-- [x] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
+- [ ] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
 - [ ] Links
 
-| Field Name           | Type                      | Description                                  |
-| -------------------- | ------------------------- | -------------------------------------------- |
-| project:name   | string                    | The name of the project. |
-| project:purpose | string                 | The purpose/aim/description of the project. |
-| project:status | string                 | Status of the project (eg. palnned, ongoing, completed). |
-| project:website         | [Link Object](#link-object) | Link to the website of the project. |
-| project:use_cases | [string]                 | Provide information which Use Cases have required the respective dataset  |
-| project:platform | [string]                 | Specifies the platforms or environments used for processing or generating the dataset. |
+| Field Name      | Type   | Description |
+| --------------- | ------ | ----------- |
+| project:name    | string | The name of the project. |
+| project:purpose | string | The purpose/aim/description of the project. |
+| project:status  | string | Status of the project (see below). |
 
-### Link Object
+### project:status
 
-This object describes a relationship with another entity.
+The project status can have any of the following values:
 
-| Field Name | Type   | Description |
-| ---------- | ------ | ----------- |
-| href       | string | **REQUIRED.** The actual link in the format of an URL. Relative and absolute links are both allowed. |
-| rel        | string | **REQUIRED.** Relationship between the current document and the linked document. |
-| type       | string | Media type of the referenced entity. |
-| title      | string | A human readable title to be used in rendered displays of the link. |
+- proposed (proposed, but not yet approved)
+- planned (approved, but has not started yet)
+- ongoing (project has started, work is ongoing)
+- paused (temporarily stopped, results may be incomplete)
+- completed (successfully completed, final results are available)
+- cancelled (permanently stopped, results may be incomplete)
+
+## Relation types
+
+The following types should be used as applicable `rel` types in the
+[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
+
+| Type    | Description |
+| ------- | ----------- |
+| project | Link to a website of the project. |
 
 ## Contributing
 
