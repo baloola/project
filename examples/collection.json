@@ -1,12 +1,10 @@
 {
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "stac_extensions": [
-    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/template/v1.0.0/schema.json",
-    "https://raw.githubusercontent.com/baloola/project/refs/heads/main/json-schema/schema.json"
+    "https://baloola.github.io/project/v0.1.0/schema.json"
   ],
   "type": "Collection",
-  "id": "collection",
+  "id": "test-project",
   "title": "A title",
   "description": "A description",
   "license": "Apache-2.0",
@@ -30,47 +28,32 @@
       ]
     }
   },
-  "project:name": "test",
-  "project:purpose": "test",
-  "project:status": "test",
-  "project:website": {
-    "href": "https://example-project.com",
-    "rel": "related"
-  },
-  "project:use_cases": [
+  "project:name": "Test Project",
+  "project:purpose": "The purpose of the project is to demonstrate the use of the STAC Project Extension.",
+  "project:status": "completed",
+  "fairicube:use_cases": [
     "use_case_1"
   ],
-  "project:platform": [
+  "fairicube:platform": [
     "EOX",
     "RASDAMAN"
   ],
-  "assets": {
-    "example": {
-      "href": "https://example.com/examples/file.xyz"
-    }
-  },
-  "item_assets": {
-    "data": {
-      "title": "Data Asset",
-      "roles": [
-        "data"
-      ]
-    }
-  },
-  "summaries": {
-    "datetime": {
-      "minimum": "2015-06-23T00:00:00Z",
-      "maximum": "2019-07-10T13:44:56Z"
-    }
-  },
   "links": [
     {
       "href": "https://example.com/examples/collection.json",
-      "rel": "self"
+      "rel": "self",
+      "type": "application/json"
     },
     {
-      "href": "https://example.com/examples/item.json",
-      "rel": "item"
+      "href": "./item.json",
+      "rel": "item",
+      "type": "application/geo+json"
+    },
+    {
+      "href": "https://example-project.com",
+      "rel": "project",
+      "type": "text/html",
+      "title": "Test Project Website"
     }
   ]
 }
